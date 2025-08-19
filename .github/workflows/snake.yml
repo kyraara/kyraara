@@ -1,0 +1,34 @@
+name: Generate snake contribution graph
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"     # jalan tiap 12 jam
+  workflow_dispatch:            # bisa run manual
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write               # WAJIB biar bisa push ke branch output
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate snake svgs
+        uses: Platane/snk@v3
+        with:
+          github_user_name: kyraara
+          outputs: |
+            dist/snake.svg
+            dist/snake-dark.svg?palette=github-dark
+
+      - name: Publish to output branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: output
+          publish_dir: ./dist
+          force_orphan: true
