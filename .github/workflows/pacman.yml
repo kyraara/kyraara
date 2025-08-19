@@ -1,0 +1,35 @@
+name: Generate pacman contribution graph
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"    # jalan tiap 12 jam
+  workflow_dispatch:           # bisa dijalankan manual
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write              # biar bisa push ke branch output
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate pacman svgs
+        uses: yoshi389111/github-profile-pacman-contribution@main
+        with:
+          user_name: kyraara   # ganti sesuai username github lu
+          theme: auto
+          mode: day
+          output_dir: dist
+
+      - name: Deploy to output branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: output
+          publish_dir: ./dist
+          force_orphan: true
