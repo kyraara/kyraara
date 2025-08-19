@@ -84,10 +84,11 @@ Sometimes yelling at bugs 🐞🔥 but still smiling.
 ###
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kyraara/kyraara/output/pacman-contribution-graph-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/kyraara/kyraara/output/pacman-contribution-graph.svg">
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/kyraara/kyraara/output/pacman-contribution-graph.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kyraara/kyraara/output/snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/kyraara/kyraara/output/snake.svg">
+  <img alt="snake contribution graph" src="https://raw.githubusercontent.com/kyraara/kyraara/output/snake.svg">
 </picture>
+
 
 ---
 
